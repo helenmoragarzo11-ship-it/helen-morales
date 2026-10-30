@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alma Estética · Proyecto concepto</title>
+<meta name="description" content="Landing page concepto para un centro de estética en Bogotá, diseñada por Helen Morales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Manrope:wght@400;500;600&display=swap">
+<style>
+/* Concepto: spa sereno — salvia y arena, serif suave, bloques redondeados como piedras de río */
+:root{--bg:#F5F1EA;--sand:#E9E1D3;--sage:#7C8C74;--sage-dark:#4E5C49;--ink:#2C2A26;--muted:#6E6A62;--line:#DDD4C4;--white:#FFFDF9;
+--serif:"Fraunces", Georgia, serif;--sans:"Manrope", system-ui, sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+.ribbon{background:var(--sage-dark);color:var(--white);font-size:.82rem;text-align:center;padding:8px 16px}
+.ribbon a{color:inherit}
+nav{padding-block:20px}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.logo{font-family:var(--serif);font-size:1.5rem;font-weight:500;letter-spacing:.02em}
+.logo span{color:var(--sage)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--sage-dark);color:var(--white);text-decoration:none;padding:14px 24px;border-radius:999px;font-weight:600;font-size:.95rem;border:0;cursor:pointer}
+.btn.light{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hero{padding-block:40px 80px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.kicker{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:600}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.6rem);margin-top:14px}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero p.lead{color:var(--muted);font-size:1.12rem;max-width:46ch;margin-top:20px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.trust{display:flex;gap:28px;flex-wrap:wrap;margin-top:36px;color:var(--muted);font-size:.9rem}
+.trust b{display:block;font-family:var(--serif);font-weight:500;font-size:1.6rem;color:var(--ink)}
+.stones{position:relative;aspect-ratio:1;max-width:100%}
+.stone{position:absolute;border-radius:48% 52% 46% 54%/55% 45% 55% 45%}
+.s1{inset:4% 10% 22% 4%;background:radial-gradient(circle at 30% 30%,#A9B7A0,var(--sage) 60%,var(--sage-dark))}
+.s2{width:46%;height:42%;right:2%;bottom:6%;background:radial-gradient(circle at 35% 30%,#F3ECE0,var(--sand) 70%,#CFC3AE)}
+.s3{width:22%;height:20%;left:8%;bottom:4%;background:radial-gradient(circle at 35% 30%,#fff,#E6DED0)}
+.badge{position:absolute;top:8%;right:4%;background:var(--white);border-radius:20px;padding:14px 18px;box-shadow:0 18px 40px -20px rgba(44,42,38,.35);font-size:.85rem}
+.badge b{display:block;font-family:var(--serif);font-size:1.3rem;font-weight:500}
+section{padding-block:80px}
+.alt{background:var(--sand)}
+.head{max-width:620px;margin-bottom:40px}
+.head h2{font-size:clamp(2rem,4.5vw,3rem);margin-top:10px}
+.head p{color:var(--muted);margin-top:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.card h3{font-size:1.5rem}
+.card p{color:var(--muted);font-size:.96rem}
+.card .price{font-family:var(--serif);font-size:1.25rem;color:var(--sage-dark);margin-top:auto}
+.icon{width:44px;height:44px;border-radius:50%;background:var(--sand);display:grid;place-items:center;color:var(--sage-dark);font-family:var(--serif);font-size:1.2rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+.steps div{border-top:1px solid var(--ink);padding-top:18px}
+.steps h3{font-size:1.35rem}
+.steps p{color:var(--muted);margin-top:8px;font-size:.96rem}
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.quote{background:var(--white);border-radius:24px;padding:30px;border:1px solid var(--line)}
+.quote p{font-family:var(--serif);font-size:1.3rem;line-height:1.4}
+.quote span{display:block;margin-top:14px;color:var(--muted);font-size:.9rem}
+.faq details{border-bottom:1px solid var(--line);padding-block:18px}
+.faq summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";font-family:var(--serif);font-size:1.4rem;color:var(--sage)}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--muted);margin-top:10px;max-width:70ch}
+.cta-band{background:var(--sage-dark);color:var(--white);border-radius:32px;padding:56px 40px;display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center}
+.cta-band h2{font-size:clamp(2rem,4.5vw,3rem)}
+.cta-band p{opacity:.85;margin-top:12px}
+.cta-band .btn{background:var(--white);color:var(--sage-dark);justify-self:end}
+footer{padding-block:36px;color:var(--muted);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--sage-dark)}
+.wa{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));background:#2E7D4F;color:#fff;border-radius:999px;padding:14px 20px;font-weight:600;text-decoration:none;box-shadow:0 14px 30px -12px rgba(0,0,0,.4);font-size:.92rem}
+:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
+@media (max-width:860px){.hero .wrap,.cta-band{grid-template-columns:1fr}.stones{max-width:360px}.grid3,.steps{grid-template-columns:1fr}.quotes{grid-template-columns:1fr}.cta-band .btn{justify-self:start}}
+</style>
+</head>
+<body>
+<div class="ribbon">Proyecto concepto diseñado por <a href="../../">Helen Morales</a>. "Alma Estética" es una marca ficticia.</div>
+<nav><div class="wrap"><span class="logo">Alma <span>Estética</span></span><a class="btn" href="#reservar">Reservar cita</a></div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Centro de estética · Chapinero, Bogotá</p>
+      <h1>Tu piel, cuidada con <em>calma</em> y criterio</h1>
+      <p class="lead">Faciales, limpiezas profundas y masajes con productos dermatológicos. Te escuchamos primero y armamos un plan para tu tipo de piel.</p>
+      <div class="ctas"><a class="btn" href="#reservar">Agenda tu valoración</a><a class="btn light" href="#servicios">Ver servicios</a></div>
+      <div class="trust"><span><b>4,9</b>Calificación promedio</span><span><b>+1.200</b>Clientas atendidas</span><span><b>8 años</b>de experiencia</span></div>
+    </div>
+    <div class="stones" aria-hidden="true">
+      <div class="stone s1"></div><div class="stone s2"></div><div class="stone s3"></div>
+      <div class="badge"><b>Valoración gratis</b>en tu primera visita</div>
+    </div>
+  </div>
+</header>
+
+<section id="servicios" class="alt">
+  <div class="wrap">
+    <div class="head"><p class="kicker">Servicios</p><h2>Tratamientos para cada momento de tu piel</h2></div>
+    <div class="grid3">
+      <article class="card"><span class="icon">I</span><h3>Limpieza facial profunda</h3><p>Extracción, exfoliación y mascarilla según tu tipo de piel. 75 minutos.</p><span class="price">Desde $120.000</span></article>
+      <article class="card"><span class="icon">II</span><h3>Hidratación intensiva</h3><p>Ácido hialurónico y masaje facial para piel deshidratada o apagada. 60 minutos.</p><span class="price">Desde $150.000</span></article>
+      <article class="card"><span class="icon">III</span><h3>Masaje relajante</h3><p>Aceites tibios y técnica sueca para soltar tensión de espalda y cuello. 60 minutos.</p><span class="price">Desde $110.000</span></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><p class="kicker">Cómo funciona</p><h2>Tres pasos, sin complicaciones</h2></div>
+    <div class="steps">
+      <div><h3>Escríbenos</h3><p>Por WhatsApp eliges el día y la hora que te sirven.</p></div>
+      <div><h3>Valoración</h3><p>Revisamos tu piel y te recomendamos el tratamiento ideal.</p></div>
+      <div><h3>Tu ritual</h3><p>Disfrutas el tratamiento y te llevas una rutina para casa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="head"><p class="kicker">Opiniones</p><h2>Lo que dicen nuestras clientas</h2></div>
+    <div class="quotes">
+      <figure class="quote" style="margin:0"><p>"Testimonio real de una clienta va aquí."</p><span>Nombre de la clienta · Servicio</span></figure>
+      <figure class="quote" style="margin:0"><p>"Segundo testimonio real va aquí."</p><span>Nombre de la clienta · Servicio</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="head"><p class="kicker">Preguntas frecuentes</p><h2>Antes de tu cita</h2></div>
+    <details><summary>¿Cuánto dura la primera cita?</summary><p>Entre 75 y 90 minutos, incluyendo la valoración de tu piel.</p></details>
+    <details><summary>¿Qué medios de pago reciben?</summary><p>Efectivo, tarjetas, Nequi y transferencia.</p></details>
+    <details><summary>¿Puedo cambiar la fecha de mi cita?</summary><p>Sí, avísanos con 24 horas de anticipación por WhatsApp.</p></details>
+  </div>
+</section>
+
+<section id="reservar" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band"><div><h2>Reserva tu valoración gratuita</h2><p>Respondemos en menos de una hora, de lunes a sábado.</p></div><a class="btn" href="#reservar">Escribir por WhatsApp</a></div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Alma Estética · Cra. 00 # 00-00, Bogotá (dirección de ejemplo)</span><span>Diseño web: <a href="../../">Helen Morales</a></span></div></footer>
+<a class="wa" href="#reservar">WhatsApp</a>
+</body>
+</html>

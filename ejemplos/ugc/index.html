@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portafolio UGC de ejemplo diseñado por Helen Morales.">
+<title>Portafolio UGC Muestra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: kit de creadora UGC — una columna tipo media kit: presentación, videos 9:16 por formato, tarifas en tabla, contacto. Colores y fotos se cambian por clienta. */
+:root{
+  --bg:#FBF5F2; --surface:#FFFFFF; --fg:#2B1A1F; --muted:#76626A; --line:#EADDD8;
+  --accent:#8C2F4B; --accent-soft:#F4E1E4; --pill:#2B1A1F; --pill-fg:#FBF5F2;
+  --display:"Young Serif", Georgia, serif; --body:"Figtree", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1C1216;--surface:#271A1F;--fg:#F6ECEE;--muted:#C2AEB4;--line:#3A2A30;--accent:#E3879E;--accent-soft:#3A2129;--pill:#F6ECEE;--pill-fg:#1C1216;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1C1216;--surface:#271A1F;--fg:#F6ECEE;--muted:#C2AEB4;--line:#3A2A30;--accent:#E3879E;--accent-soft:#3A2129;--pill:#F6ECEE;--pill-fg:#1C1216;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:920px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+p{margin:0}
+.demo{background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:10px 14px;font-size:.88rem;font-weight:500;margin-bottom:28px}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.hero{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:center}
+.photo{aspect-ratio:4/5;max-width:100%;border-radius:22px;background:linear-gradient(160deg,var(--accent-soft),var(--accent));display:grid;place-items:end start;padding:14px;color:#fff;font-size:.75rem;font-weight:600}
+.hero h1{font-size:clamp(2.4rem,6vw,3.6rem);margin-top:6px}
+.hero .bio{color:var(--muted);margin-top:12px;max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{background:var(--pill);color:var(--pill-fg);border-radius:999px;padding:4px 12px;font-size:.84rem;font-weight:500}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.fact b{display:block;font-family:var(--display);font-size:1.5rem;font-weight:400}
+.fact span{color:var(--muted);font-size:.88rem}
+section{margin-top:56px}
+section > h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:6px 0 20px}
+.videos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.vid{aspect-ratio:9/16;max-width:100%;border-radius:16px;background:linear-gradient(170deg,#C9A3AE,#8C2F4B 70%,#4A1828);color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:12px;position:relative}
+.vid:nth-child(2){background:linear-gradient(200deg,#E8C8B8,#B0675A 70%,#5A2A24)}
+.vid:nth-child(3){background:linear-gradient(170deg,#BFC7B0,#6F7F5E 70%,#2F3A25)}
+.vid:nth-child(4){background:linear-gradient(200deg,#D9C6E0,#7B5C8C 70%,#3A2648)}
+.vid .t{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.vid p{font-size:.84rem;font-weight:500}
+.vid::after{content:"";position:absolute;inset:0;margin:auto;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.8)}
+.brands{display:flex;flex-wrap:wrap;gap:10px}
+.brands span{border:1px dashed var(--line);border-radius:12px;padding:12px 18px;color:var(--muted);font-size:.9rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:460px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.p{font-family:var(--display);font-size:1.15rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.small{color:var(--muted);font-size:.86rem;margin-top:10px}
+.contact{background:var(--accent);color:#fff;border-radius:22px;padding:32px;display:grid;gap:10px}
+.contact h2{color:#fff}
+.contact .row{display:flex;flex-wrap:wrap;gap:10px 24px;font-weight:600}
+footer{margin-top:28px;color:var(--muted);font-size:.84rem;text-align:center}
+@media (max-width:700px){.hero{grid-template-columns:1fr}.photo{max-width:180px}.videos{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <p class="demo">Ejemplo de portafolio UGC con una creadora ficticia, diseñado por <a href="../../" style="color:inherit">Helen Morales</a>. Los textos, fotos, videos y tarifas se reemplazan por los de cada clienta.</p>
+
+  <header class="hero">
+    <div class="photo">Foto de la creadora</div>
+    <div>
+      <p class="eyebrow">Creadora de contenido UGC · Medellín</p>
+      <h1>Valentina Ríos</h1>
+      <p class="bio">Hago videos naturales que se sienten como la recomendación de una amiga. Grabo en casa con buena luz, escribo mis propios ganchos y entrego listo para pauta.</p>
+      <div class="chips"><span class="chip">Skincare</span><span class="chip">Bebidas</span><span class="chip">Hogar</span><span class="chip">Apps</span></div>
+    </div>
+  </header>
+
+  <div class="facts">
+    <div class="fact"><b>48 h</b><span>Entrega promedio por video</span></div>
+    <div class="fact"><b>9:16</b><span>Formato listo para TikTok, Reels y anuncios</span></div>
+    <div class="fact"><b>ES · EN</b><span>Videos en español e inglés</span></div>
+  </div>
+
+  <section>
+    <p class="eyebrow">Mi trabajo</p>
+    <h2>Videos por formato</h2>
+    <div class="videos">
+      <div class="vid"><span class="t">Unboxing</span><p>Primer contacto con el producto</p></div>
+      <div class="vid"><span class="t">Testimonio</span><p>Mi experiencia después de 2 semanas</p></div>
+      <div class="vid"><span class="t">Tutorial</span><p>Cómo lo uso paso a paso</p></div>
+      <div class="vid"><span class="t">GRWM</span><p>Arréglate conmigo con el producto</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Marcas</p>
+    <h2>He creado contenido para</h2>
+    <div class="brands"><span>Marca 1</span><span>Marca 2</span><span>Marca 3</span><span>Marca 4</span></div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Tarifas</p>
+    <h2>Paquetes</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Paquete</th><th>Incluye</th><th>Precio</th></tr></thead>
+        <tbody>
+          <tr><td>1 video</td><td>Hasta 45 s, 1 gancho, 1 revisión</td><td class="p">[precio]</td></tr>
+          <tr><td>3 videos</td><td>3 ángulos distintos, 2 ganchos cada uno</td><td class="p">[precio]</td></tr>
+          <tr><td>Fotos de producto</td><td>5 fotos naturales con el producto</td><td class="p">[precio]</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Derechos para pauta pagada y entregas urgentes se cotizan aparte.</p>
+  </section>
+
+  <section class="contact">
+    <p class="eyebrow" style="color:#fff;opacity:.85">Trabajemos juntos</p>
+    <h2>¿Tu marca necesita contenido que venda?</h2>
+    <div class="row"><span>correo@ejemplo.com</span><span>@usuario</span><span>WhatsApp +57 000 000 0000</span></div>
+  </section>
+
+  <footer>Portafolio diseñado por <a href="../../" style="color:inherit">Helen Morales</a></footer>
+</div>
+
+</body>
+</html>

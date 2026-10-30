@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coach Laura Vega · Proyecto concepto</title>
+<meta name="description" content="Landing page concepto para una entrenadora personal en Bogotá, diseñada por Helen Morales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+/* Concepto: energía de gimnasio — carbón y lima, titulares condensados enormes, bloques con esquinas rectas */
+:root{--bg:#121412;--panel:#1C1F1C;--ink:#F2F4EE;--muted:#A9AEA3;--line:#2E322D;--lime:#C8F25A;--lime-ink:#1A1F0A;
+--display:"Archivo", "Arial Narrow", system-ui, sans-serif;--sans:"Inter Tight", system-ui, sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:.95;margin:0;text-transform:uppercase;letter-spacing:-.01em}
+p{margin:0}
+.ribbon{background:var(--lime);color:var(--lime-ink);font-size:.82rem;text-align:center;padding:8px 16px;font-weight:600}
+.ribbon a{color:inherit}
+nav{padding-block:20px;border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.logo{font-family:var(--display);font-weight:900;font-size:1.3rem;letter-spacing:.02em}
+.logo span{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;background:var(--lime);color:var(--lime-ink);text-decoration:none;padding:15px 24px;font-weight:600;font-size:.95rem;border-radius:4px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hero{padding-block:56px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end}
+.tag{font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.hero h1{font-size:clamp(3rem,10vw,7rem);font-weight:900;margin-top:16px}
+.hero h1 .l{color:var(--lime)}
+.hero p.lead{color:var(--muted);font-size:1.12rem;max-width:44ch;margin-top:22px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stats{display:grid;gap:12px}
+.stat{background:var(--panel);border:1px solid var(--line);padding:20px;border-radius:4px}
+.stat b{font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1;color:var(--lime)}
+.stat span{display:block;color:var(--muted);font-size:.9rem;margin-top:6px}
+section{padding-block:80px;border-top:1px solid var(--line)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.head h2{font-size:clamp(2.2rem,6vw,4rem);font-weight:900}
+.head p{color:var(--muted);max-width:40ch}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.plan{background:var(--panel);border:1px solid var(--line);padding:28px;border-radius:4px;display:flex;flex-direction:column;gap:14px}
+.plan.hot{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
+.plan h3{font-size:1.6rem;font-weight:800}
+.plan .price{font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1}
+.plan .price small{font-family:var(--sans);font-size:.9rem;font-weight:500;opacity:.75}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.plan li::before{content:"→ ";color:var(--lime)}
+.plan.hot li::before{color:var(--lime-ink)}
+.plan .btn{margin-top:auto;justify-content:center}
+.plan.hot .btn{background:var(--lime-ink);color:var(--lime)}
+.ba{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ba div{background:var(--panel);border:1px solid var(--line);padding:24px;border-radius:4px}
+.ba b{font-family:var(--display);font-weight:900;font-size:3rem;color:var(--lime);line-height:1}
+.ba p{color:var(--muted);margin-top:10px}
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.photo{aspect-ratio:4/5;max-width:100%;background:repeating-linear-gradient(135deg,var(--panel) 0 14px,#232723 14px 28px);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:.85rem;border-radius:4px}
+.about p{color:var(--muted);margin-top:16px;max-width:56ch}
+.final{text-align:center;padding-block:96px}
+.final h2{font-size:clamp(2.6rem,8vw,5.6rem);font-weight:900}
+.final h2 span{color:var(--lime)}
+.final .ctas{justify-content:center}
+footer{padding-block:32px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--lime)}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+@media (max-width:860px){.hero .wrap,.about{grid-template-columns:1fr}.plans,.ba{grid-template-columns:1fr}.photo{max-width:320px}}
+</style>
+</head>
+<body>
+<div class="ribbon">Proyecto concepto diseñado por <a href="../../">Helen Morales</a>. "Coach Laura Vega" es un personaje ficticio.</div>
+<nav><div class="wrap"><span class="logo">LAURA<span>.</span>VEGA</span><a class="btn" href="#planes">Empieza hoy</a></div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="tag">Entrenadora personal · Bogotá y online</p>
+      <h1>Más fuerte en <span class="l">12 semanas</span></h1>
+      <p class="lead">Entrenamiento personalizado y plan de alimentación sencillo, con seguimiento real cada semana. Sin dietas extremas ni rutinas copiadas de internet.</p>
+      <div class="ctas"><a class="btn" href="#planes">Ver planes</a><a class="btn ghost" href="#resultados">Resultados</a></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>5</b><span>cupos de entrenamiento presencial este mes</span></div>
+      <div class="stat"><b>3×</b><span>sesiones por semana en el plan más pedido</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="planes">
+  <div class="wrap">
+    <div class="head"><h2>Planes</h2><p>Todos incluyen valoración inicial y ajustes cada semana.</p></div>
+    <div class="plans">
+      <article class="plan"><p class="tag">Online</p><h3>Rutina guiada</h3><p class="price">$180.000 <small>/ mes</small></p><ul><li>Rutina en app con videos</li><li>Revisión semanal por WhatsApp</li><li>Guía de alimentación</li></ul><a class="btn ghost" href="#empezar">Quiero este</a></article>
+      <article class="plan hot"><p class="tag" style="color:var(--lime-ink)">Más pedido</p><h3>Presencial 3×</h3><p class="price">$520.000 <small>/ mes</small></p><ul><li>12 sesiones en el gimnasio</li><li>Plan de alimentación</li><li>Medición mensual</li></ul><a class="btn" href="#empezar">Quiero este</a></article>
+      <article class="plan"><p class="tag">Intensivo</p><h3>Transformación</h3><p class="price">$780.000 <small>/ mes</small></p><ul><li>5 sesiones por semana</li><li>Nutrición personalizada</li><li>Acompañamiento diario</li></ul><a class="btn ghost" href="#empezar">Quiero este</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="resultados">
+  <div class="wrap">
+    <div class="head"><h2>Lo que logras</h2><p>Metas que trabajamos con cada alumna, según su punto de partida.</p></div>
+    <div class="ba">
+      <div><b>Fuerza</b><p>Levantas más peso con buena técnica y sin lesiones.</p></div>
+      <div><b>Hábito</b><p>Entrenas con constancia porque el plan cabe en tu semana.</p></div>
+      <div><b>Energía</b><p>Duermes mejor y llegas con más ánimo al final del día.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about">
+    <div class="photo">Foto de la entrenadora</div>
+    <div>
+      <p class="tag">Sobre mí</p>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;margin-top:12px">Entreno personas, no rutinas</h2>
+      <p>Aquí va la historia real de la entrenadora: cómo empezó, su formación y por qué entrena como entrena. Un texto corto y cercano que genere confianza.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="empezar">
+  <div class="wrap">
+    <h2>Tu primera semana <span>empieza hoy</span></h2>
+    <div class="ctas" style="margin-top:28px"><a class="btn" href="#empezar">Escribir por WhatsApp</a></div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Coach Laura Vega · Bogotá (marca de ejemplo)</span><span>Diseño web: <a href="../../">Helen Morales</a></span></div></footer>
+</body>
+</html>

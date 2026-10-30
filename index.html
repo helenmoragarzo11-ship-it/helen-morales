@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Helen Morales · Edición de video y páginas web">
+<meta property="og:image" content="v/helen.jpg">
+<link rel="icon" href="v/perfil-vino.png">
+<meta name="description" content="Helen Morales, editora de video y diseñadora web en Bogotá. Reels, TikTok, YouTube, color en DaVinci Resolve, páginas web y portafolios UGC.">
+<title>Helen Morales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Jost:wght@300;400;500&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: revista en vino — firma en cursiva como sello, titulares en Jost espaciado, secciones alternan vino profundo y vino oscuro; crema solo para texto y detalles */
+:root{
+  --bg:#1E0508;
+  --bg-2:#2A070C;
+  --vino:#7A0A12;
+  --vino-dark:#3A060B;
+  --surface:#33090F;
+  --crema:#F6EEE3;
+  --muted:#D7BFB3;
+  --line:#55141C;
+  --script:"Allura", "Brush Script MT", cursive;
+  --wide:"Jost", "Century Gothic", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--crema);font-family:var(--body);font-size:17px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--wide);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--crema);outline-offset:3px;border-radius:6px}
+.eyebrow{font-family:var(--wide);font-size:.74rem;font-weight:400;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+.script{font-family:var(--script);font-weight:400}
+
+/* logo */
+.helen{font-family:var(--script);font-weight:400;line-height:.85;display:block}
+.morales{font-family:var(--wide);font-weight:400;letter-spacing:.7em;margin-right:-.7em;display:block}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;padding-block:12px;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .helen{font-size:2.3rem;line-height:1}
+.brand .div{width:1px;height:26px;background:var(--crema);opacity:.45}
+.brand .morales{font-size:.62rem;letter-spacing:.45em;margin:0}
+.nav-links{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--wide);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
+.nav-links a{text-decoration:none;color:var(--muted)}
+.nav-links a:hover{color:var(--crema)}
+
+/* hero */
+.hero{padding-block:64px 76px;background:radial-gradient(70% 90% at 80% 40%, #8E0E18, var(--vino) 40%, var(--bg) 85%)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.1rem);font-weight:300;letter-spacing:-.01em}
+.hero h1 .script{font-size:1.45em;line-height:.6;display:inline-block;transform:translateY(.1em);padding-right:.05em}
+.hero .lead{font-size:1.15rem;color:var(--muted);max-width:52ch;margin-top:24px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;padding:14px 26px;border-radius:999px;text-decoration:none;font-family:var(--wide);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--crema)}
+.btn.primary{background:var(--crema);color:var(--vino-dark)}
+.btn.ghost{color:var(--crema);border-color:rgba(246,238,227,.45)}
+.btn.ghost:hover{border-color:var(--crema)}
+.hero-photo{position:relative;margin:0;justify-self:end;width:100%;max-width:400px}
+.hero-photo .frame{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:200px 200px 18px 18px;overflow:hidden;border:1px solid rgba(246,238,227,.25);background:var(--vino-dark)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;display:block;filter:sepia(.18) contrast(1.05)}
+.hero-photo .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(58,6,11,.8));mix-blend-mode:multiply;pointer-events:none}
+.hero-photo figcaption{position:absolute;left:-28px;bottom:22px;z-index:2;text-align:left}
+.hero-photo .helen{font-size:clamp(4rem,9vw,5.6rem);line-height:.8;text-shadow:0 6px 24px rgba(30,5,8,.6)}
+.hero-photo .morales{font-size:.78rem;letter-spacing:.6em;margin:10px 0 0 6px}
+.hero-photo .tag{display:block;margin:8px 0 0 6px;font-family:var(--wide);font-weight:300;font-size:.6rem;letter-spacing:.36em;color:var(--muted)}
+.credits{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:baseline;margin-top:44px;padding-top:24px;border-top:1px solid var(--line)}
+.credits strong{font-family:var(--wide);font-weight:400;font-size:1.1rem;letter-spacing:.06em}
+
+/* sections */
+section{padding-block:80px}
+.alt{background:var(--bg-2)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:300;margin-top:10px}
+.sec-head h2 .script{font-size:1.35em;line-height:.6}
+.sec-head p{color:var(--muted);max-width:46ch}
+
+/* reel */
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.clip{position:relative;margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.screen{position:relative;aspect-ratio:9/16;max-width:100%;border-radius:14px;overflow:hidden;background:var(--vino-dark);border:1px solid var(--line);cursor:pointer;padding:0;display:block;width:100%;color:inherit;font:inherit}
+.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.screen::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(30,5,8,.55));pointer-events:none}
+.play{position:absolute;inset:0;margin:auto;width:62px;height:62px;border-radius:50%;border:1px solid rgba(246,238,227,.8);background:rgba(30,5,8,.35);backdrop-filter:blur(3px);display:grid;place-items:center;transition:transform .25s, opacity .25s;z-index:2}
+.play::before{content:"";border-left:15px solid var(--crema);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.screen:hover .play{transform:scale(1.06)}
+.screen.playing .play{opacity:0}
+.sound{position:absolute;left:12px;bottom:12px;z-index:2;font-family:var(--wide);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--crema);opacity:.9}
+.clip h3{font-size:1.1rem;font-weight:500}
+.clip p{font-size:.88rem;color:var(--muted);margin-top:2px}
+.clip a{color:var(--crema);font-size:.85rem;text-underline-offset:3px}
+.featured-work{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:40px;align-items:center;margin-bottom:44px;padding-bottom:44px;border-bottom:1px solid var(--line)}
+.featured-work h3{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:300;margin-top:10px}
+.featured-work h3 .script{font-size:1.35em;line-height:.6}
+.featured-work p{color:var(--muted);margin-top:14px;max-width:48ch}
+.featured-work ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:8px}
+.featured-work li{padding-left:20px;position:relative}
+.featured-work li::before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--crema);opacity:.7}
+@media (max-width: 760px){.featured-work{grid-template-columns:1fr;gap:24px}.featured-work .screen{max-width:320px}}
+.sectors{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:32px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--wide);font-size:.95rem;letter-spacing:.04em;color:var(--muted)}
+.note{margin-top:16px;font-size:.9rem;color:var(--muted)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.svc.featured{background:linear-gradient(160deg,#8E0E18,var(--vino));border-color:#9A1520}
+.svc h3{font-size:1.45rem}
+.price{font-family:var(--wide);font-size:2.1rem;font-weight:400;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--body);font-size:.92rem;color:var(--muted)}
+.svc.featured .price small{color:var(--crema);opacity:.85}
+.svc ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.svc li{padding-left:20px;position:relative}
+.svc li::before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--crema);opacity:.7}
+.tag-pill{align-self:flex-start;border:1px solid rgba(246,238,227,.5);font-family:var(--wide);font-size:.66rem;letter-spacing:.2em;padding:4px 12px;border-radius:999px;text-transform:uppercase}
+.svc.featured .tag-pill{background:var(--crema);color:var(--vino-dark);border-color:var(--crema)}
+
+.svc-group{display:grid;grid-template-columns:260px 1fr;gap:32px;padding-block:36px;border-top:1px solid var(--line)}
+.svc-group:first-of-type{border-top:0;padding-top:0}
+.svc-intro{display:flex;flex-direction:column;gap:12px;min-width:0}
+.svc-intro h3{font-size:1.9rem;font-weight:300}
+.svc-intro h3 .script{font-size:1.5em;line-height:.6}
+.svc-intro p{color:var(--muted);font-size:.95rem}
+.svc-intro .for{font-family:var(--wide);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--crema);opacity:.8}
+.jump{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+@media (max-width: 860px){.svc-group{grid-template-columns:1fr;gap:20px}}
+
+
+/* ejemplos */
+.examples{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ex{display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;min-width:0}
+.ex .shot{aspect-ratio:4/3;max-width:100%;border-radius:14px;border:1px solid var(--line);overflow:hidden;position:relative;display:flex;flex-direction:column;padding:14px;gap:8px;transition:transform .25s}
+.ex:hover .shot{transform:translateY(-4px)}
+.ex .bar{display:flex;gap:5px}.ex .bar i{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.35}
+.ex .t1{font-size:1.35rem;line-height:1.05;margin-top:auto}
+.ex .t2{height:8px;border-radius:4px;width:60%;opacity:.35;background:currentColor}
+.ex .pill{align-self:flex-start;border-radius:999px;padding:5px 12px;font-size:.7rem;font-weight:600}
+.ex h3{font-size:1.15rem;font-weight:500}
+.ex p{color:var(--muted);font-size:.9rem}
+.ex span.go{font-family:var(--wide);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+.s-est{background:#F5F1EA;color:#2C2A26}.s-est .t1{font-family:Georgia,serif;font-weight:300}.s-est .pill{background:#4E5C49;color:#FFFDF9}
+.s-fit{background:#121412;color:#F2F4EE}.s-fit .t1{font-weight:900;text-transform:uppercase;font-family:"Arial Narrow",sans-serif}.s-fit .pill{background:#C8F25A;color:#1A1F0A}
+.s-ugc{background:#FBF5F2;color:#2B1A1F}.s-ugc .t1{font-family:Georgia,serif}.s-ugc .pill{background:#8C2F4B;color:#fff}
+@media (max-width:860px){.examples{grid-template-columns:1fr}}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(246,238,227,.4)}
+.step{padding:24px 22px 0 0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step .n{font-family:var(--script);font-size:2.6rem;line-height:1}
+.step h3{font-size:1.2rem;font-weight:500}
+.step p{color:var(--muted);font-size:.96rem}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about .big{font-family:var(--wide);font-weight:300;font-size:clamp(1.5rem,3vw,2rem);line-height:1.3;margin-top:14px}
+.portrait{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:18px;margin:28px 0 0;overflow:hidden;background:var(--vino-dark);border:1px solid var(--line)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:sepia(.18) contrast(1.05)}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(58,6,11,.75));mix-blend-mode:multiply;pointer-events:none}
+.portrait figcaption{position:absolute;left:18px;bottom:12px;z-index:1}
+.portrait figcaption .helen{font-size:2.8rem;line-height:1}
+.facts{margin:0}
+.fact{display:grid;grid-template-columns:140px 1fr;gap:16px;padding-block:16px;border-bottom:1px solid var(--line)}
+.fact dt{font-family:var(--wide);font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;color:var(--muted);padding-top:4px}
+.fact dd{margin:0}
+
+/* quotes, en, contact */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:12px;min-width:0;margin:0}
+.quote{font-family:var(--wide);font-weight:300;font-size:1.45rem;line-height:1.35;margin:0}
+.value{font-family:var(--wide);font-size:1.4rem;word-break:break-word;margin:0}
+.en{border:1px solid var(--line);border-radius:22px;padding:36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:var(--bg-2)}
+.en .script{font-size:3.4rem;line-height:1}
+.en h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:400}
+.en p{color:var(--muted);margin-top:10px;max-width:60ch}
+.contact{background:radial-gradient(70% 90% at 15% 100%, #8E0E18, var(--vino) 35%, var(--bg) 85%)}
+.contact h2{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:300;max-width:18ch;margin-top:12px}
+.contact h2 .script{font-size:1.4em;line-height:.6}
+.copy{align-self:flex-start;background:transparent;border:1px solid rgba(246,238,227,.45);color:var(--crema);border-radius:999px;padding:8px 16px;cursor:pointer;font-family:var(--wide);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+.copy:hover{border-color:var(--crema)}
+footer{padding-block:36px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer .helen{font-size:2rem;color:var(--crema)}
+
+@media (max-width: 1000px){.svc-group .services{grid-template-columns:1fr}}
+@media (max-width: 860px){
+  .hero .wrap,.about,.grid2{grid-template-columns:1fr}
+  .hero-photo{justify-self:start;order:-1;max-width:300px}
+  .hero-photo figcaption{left:16px}
+  .services{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:28px}
+  .en{grid-template-columns:1fr}
+}
+@media (max-width: 560px){
+  .reel{grid-template-columns:1fr 1fr;gap:14px}
+  .steps{grid-template-columns:1fr}
+  .fact{grid-template-columns:1fr;gap:4px}
+  .nav-links{display:none}
+  section{padding-block:60px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Helen Morales, inicio">
+      <span class="helen">Helen</span><span class="div"></span><span class="morales">MORALES</span>
+    </a>
+    <div class="nav-links">
+      <a href="#trabajo">Trabajo</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#ejemplos">Ejemplos</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Hola, soy Helen · Editora de video en Bogotá</p>
+      <h1 style="margin-top:16px">Videos que detienen el scroll y páginas que <span class="script">venden</span></h1>
+      <p class="lead">Edito reels, TikToks y videos para YouTube con color profesional en DaVinci Resolve, y diseño páginas web para negocios que quieren verse serios en internet.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#contacto">Cotiza tu proyecto</a>
+        <a class="btn ghost" href="#trabajo">Ver mi trabajo</a>
+      </div>
+      <div class="credits">
+        <span class="eyebrow">Créditos de edición</span>
+        <strong>Chino y Nacho</strong>
+        <strong>Fer Ariza</strong>
+        <span class="eyebrow">3+ años · 50+ proyectos · 38K vistas orgánicas</span>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <div class="frame"><img src="v/helen.jpg" alt="Retrato de Helen Morales, editora de video"></div>
+      <figcaption aria-hidden="true"><span class="helen">Helen</span><span class="morales">MORALES</span><span class="tag">EDICIÓN · COLOR · WEB</span></figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="trabajo" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Portafolio</p>
+        <h2>Trabajo <span class="script">seleccionado</span></h2>
+      </div>
+      <p>Videos verticales para marcas, artistas y creadores, con ritmo, ganchos en los primeros 3 segundos y color cuidado. Toca un video para verlo con sonido.</p>
+    </div>
+    <div class="featured-work">
+      <div class="clip">
+        <button class="screen" type="button" aria-label="Reproducir video de Floralba Núñez"><video src="v/realtor.mp4" poster="v/realtor.jpg" playsinline loop preload="none"></video><span class="play" aria-hidden="true"></span><span class="sound">Con sonido</span></button>
+      </div>
+      <div>
+        <p class="eyebrow">Proyecto destacado · Real estate</p>
+        <h3>Floralba Núñez, <span class="script">realtor</span></h3>
+        <p>Contenido de autoridad para una de las asesoras inmobiliarias más reconocidas del sector. El objetivo: que su experiencia se transmita con la misma elegancia de las propiedades que representa y que cada mensaje genere confianza en compradores e inversionistas.</p>
+        <ul>
+          <li>Narrativa editada para sostener la atención de principio a fin</li>
+          <li>Tipografía animada alineada con una imagen de marca premium</li>
+          <li>Gráficos que resaltan los conceptos clave del mensaje</li>
+          <li>Color cálido y tono de piel natural</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reel">
+      <figure class="clip">
+        <button class="screen" type="button" aria-label="Reproducir video de Fer Ariza en vivo"><video src="v/artista.mp4" poster="v/artista.jpg" playsinline loop preload="none"></video><span class="play" aria-hidden="true"></span><span class="sound">Con sonido</span></button>
+        <figcaption><span class="eyebrow">Artistas</span><h3>Fer Ariza · Tributo Parrandero</h3><p>Presentación en vivo con color cálido y cortes al ritmo de la música.</p><a href="https://www.tiktok.com/@ferarizam/video/7607662119445613838" target="_blank" rel="noopener">Ver en TikTok</a></figcaption>
+      </figure>
+      <figure class="clip">
+        <button class="screen" type="button" aria-label="Reproducir lanzamiento de Niña Bonita 2"><video src="v/lanzamiento.mp4" poster="v/lanzamiento.jpg" playsinline loop preload="none"></video><span class="play" aria-hidden="true"></span><span class="sound">Con sonido</span></button>
+        <figcaption><span class="eyebrow">Lanzamiento musical</span><h3>Niña Bonita 2 · Chino y Nacho, Fer Ariza</h3><p>Pieza de lanzamiento con tipografía animada.</p></figcaption>
+      </figure>
+      <figure class="clip">
+        <button class="screen" type="button" aria-label="Reproducir anuncio de frappé de pistacho"><video src="v/producto.mp4" poster="v/producto.jpg" playsinline loop preload="none"></video><span class="play" aria-hidden="true"></span><span class="sound">Con sonido</span></button>
+        <figcaption><span class="eyebrow">Producto · 4K</span><h3>Pistachio Protein Frappé</h3><p>Anuncio de producto en inglés con primeros planos y texto integrado.</p></figcaption>
+      </figure>
+      <figure class="clip">
+        <button class="screen" type="button" aria-label="Reproducir anuncio de pickleball"><video src="v/deporte.mp4" poster="v/deporte.jpg" playsinline loop preload="none"></video><span class="play" aria-hidden="true"></span><span class="sound">Con sonido</span></button>
+        <figcaption><span class="eyebrow">Anuncio · EE. UU.</span><h3>Have you tried pickleball?</h3><p>Video cinematográfico para un club deportivo, con ritmo de comercial.</p></figcaption>
+      </figure>
+      <figure class="clip">
+        <button class="screen" type="button" aria-label="Reproducir video de retratos con color cinematográfico"><video src="v/retratos.mp4" poster="v/retratos.jpg" playsinline loop preload="none"></video><span class="play" aria-hidden="true"></span><span class="sound">Con sonido</span></button>
+        <figcaption><span class="eyebrow">Color · DaVinci Resolve</span><h3>Retratos en estudio</h3><p>Corrección de color cinematográfica y piel natural.</p></figcaption>
+      </figure>
+      <figure class="clip">
+        <button class="screen" type="button" aria-label="Reproducir video de restaurante"><video src="v/restaurante.mp4" poster="v/restaurante.jpg" playsinline loop preload="none"></video><span class="play" aria-hidden="true"></span><span class="sound">Con sonido</span></button>
+        <figcaption><span class="eyebrow">Restaurante · Miami</span><h3>Waffles y frutas</h3><p>Contenido para un restaurante saludable en Miami, con ganchos y textos en inglés.</p></figcaption>
+      </figure>
+    </div>
+    <p class="note">Más trabajo en redes: <a href="https://www.instagram.com/reels/DbRcTbglXJp/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@mueblespulido/video/7657367167507107079" target="_blank" rel="noopener">Muebles Pulido</a> · <a href="https://www.tiktok.com/@alegriabyelrancherito_/video/7621269591683075346" target="_blank" rel="noopener">Alegría by El Rancherito</a></p>
+    <div class="sectors" aria-label="Sectores con los que trabajo">
+      <span>Restaurantes y lifestyle</span><span>Creadores educativos</span><span>Marcas personales y coaches</span><span>Bienes raíces</span><span>Cortometrajes</span><span>Marketing legal (EE. UU.)</span>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Servicios</p>
+        <h2>Qué puedo hacer por tu <span class="script">marca</span></h2>
+      </div>
+      <p>Precios fijos y claros. Todos los proyectos empiezan con 50 % de anticipo e incluyen 2 rondas de cambios.</p>
+    </div>
+    <div class="jump">
+      <a class="btn ghost" href="#edicion">Edición de video</a>
+      <a class="btn ghost" href="#web">Páginas web</a>
+      <a class="btn ghost" href="#ugc">Portafolios UGC</a>
+    </div>
+
+    <div class="svc-group" id="edicion">
+      <div class="svc-intro">
+        <p class="eyebrow">01 · Video</p>
+        <h3>Edición de <span class="script">video</span></h3>
+        <p>Reels, TikToks y shorts con ritmo, ganchos y color profesional en DaVinci Resolve.</p>
+        <span class="for">Para creadores, marcas y artistas · Colombia y exterior</span>
+      </div>
+    <div class="services">
+      <article class="svc featured">
+        <span class="tag-pill">Más pedido</span>
+        <p class="eyebrow" style="color:var(--crema);opacity:.8">Edición mensual</p>
+        <h3>Tu contenido del mes, resuelto</h3>
+        <p class="price">700 USD <small>/ mes</small></p>
+        <ul>
+          <li>12 reels, TikToks o shorts</li>
+          <li>Color profesional en DaVinci Resolve</li>
+          <li>Subtítulos dinámicos y ganchos fuertes</li>
+          <li>Entregas semanales</li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="tag-pill">Por pieza</span>
+        <p class="eyebrow">Edición de video</p>
+        <h3>Un video listo para publicar o pautar</h3>
+        <p class="price">250.000 COP <small>· 200 USD exterior</small></p>
+        <ul>
+          <li>Video de hasta 60 segundos, entrega en 48 horas</li>
+          <li>2 versiones de gancho para probar</li>
+          <li>Subtítulos y música</li>
+        </ul>
+      </article>
+    </div>
+    </div>
+
+    <div class="svc-group" id="web">
+      <div class="svc-intro">
+        <p class="eyebrow">02 · Web</p>
+        <h3>Páginas <span class="script">web</span></h3>
+        <p>Páginas claras que se ven bien en celular y llevan a tus clientes directo a WhatsApp.</p>
+        <span class="for">Para negocios locales y emprendedores</span>
+        <a class="btn ghost" href="#ejemplos" style="align-self:flex-start;margin-top:6px">Ver ejemplos</a>
+      </div>
+    <div class="services">
+      <article class="svc featured">
+        <span class="tag-pill">Precio de lanzamiento</span>
+        <p class="eyebrow">Página web</p>
+        <h3>Landing page para tu negocio</h3>
+        <p class="price">1.000.000 COP</p>
+        <ul>
+          <li>Una página clara que lleva a WhatsApp</li>
+          <li>Textos escritos para vender</li>
+          <li>Se ve perfecta en celular</li>
+          <li>Entrega en 10 días hábiles</li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="tag-pill">Combo</span>
+        <p class="eyebrow">Web + video</p>
+        <h3>Lanza tu negocio con todo</h3>
+        <p class="price">1.600.000 COP</p>
+        <ul>
+          <li>Landing page completa</li>
+          <li>4 reels editados para anunciarla</li>
+          <li>Mantenimiento opcional: 150.000 COP/mes</li>
+        </ul>
+      </article>
+    </div>
+    </div>
+
+    <div class="svc-group" id="ugc">
+      <div class="svc-intro">
+        <p class="eyebrow">03 · Creadoras</p>
+        <h3>Portafolios <span class="script">UGC</span></h3>
+        <p>Tu portafolio listo para enviar a marcas: presentación, videos por formato, tarifas y contacto en una sola página.</p>
+        <span class="for">Para creadoras UGC que empiezan o quieren subir sus tarifas</span>
+        <a class="btn ghost" href="ejemplos/ugc/" style="align-self:flex-start;margin-top:6px">Ver ejemplo</a>
+      </div>
+    <div class="services">
+      <article class="svc">
+        <span class="tag-pill">Básico</span>
+        <p class="eyebrow">Portafolio UGC</p>
+        <h3>Lista para escribirle a marcas</h3>
+        <p class="price">280.000 COP <small>· 79 USD exterior</small></p>
+        <ul>
+          <li>Página con tu foto, bio, nichos y tarifas</li>
+          <li>De 3 a 6 de tus videos</li>
+          <li>Botón de contacto</li>
+          <li>Entrega en 3 días</li>
+        </ul>
+      </article>
+      <article class="svc featured">
+        <span class="tag-pill">Pro</span>
+        <p class="eyebrow" style="color:var(--crema);opacity:.8">Portafolio + edición</p>
+        <h3>Para destacar desde el primer video</h3>
+        <p class="price">480.000 COP <small>· 129 USD exterior</small></p>
+        <ul>
+          <li>Todo lo del Básico</li>
+          <li>Edición de 2 videos de muestra con ganchos</li>
+          <li>Textos de tu portafolio escritos por mí</li>
+          <li>Actualización mensual opcional: 50.000 COP</li>
+        </ul>
+      </article>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="ejemplos" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Páginas de ejemplo</p>
+        <h2>Así se ve una página <span class="script">mía</span></h2>
+      </div>
+      <p>Proyectos concepto con marcas ficticias, para que veas el estilo y la calidad antes de cotizar. Ábrelos en tu celular.</p>
+    </div>
+    <div class="examples">
+      <a class="ex" href="ejemplos/estetica/"><div class="shot s-est"><div class="bar"><i></i><i></i><i></i></div><span class="t1">Tu piel, cuidada con calma</span><span class="t2"></span><span class="pill">Reservar cita</span></div><h3>Centro de estética</h3><p>Landing page para reservar valoraciones por WhatsApp.</p><span class="go">Ver ejemplo →</span></a>
+      <a class="ex" href="ejemplos/entrenadora/"><div class="shot s-fit"><div class="bar"><i></i><i></i><i></i></div><span class="t1">Más fuerte en 12 semanas</span><span class="t2"></span><span class="pill">Ver planes</span></div><h3>Entrenadora personal</h3><p>Página de planes y precios para conseguir alumnos.</p><span class="go">Ver ejemplo →</span></a>
+      <a class="ex" href="ejemplos/ugc/"><div class="shot s-ugc"><div class="bar"><i></i><i></i><i></i></div><span class="t1">Valentina Ríos, creadora UGC</span><span class="t2"></span><span class="pill">Tarifas</span></div><h3>Portafolio UGC</h3><p>Portafolio listo para enviar a marcas.</p><span class="go">Ver ejemplo →</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2>De la idea a la <span class="script">entrega</span></h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">uno</span><h3>Llamada de 15 minutos</h3><p>Me cuentas qué vendes, a quién y qué quieres lograr.</p></div>
+      <div class="step"><span class="n">dos</span><h3>Propuesta y anticipo</h3><p>Recibes alcance, fechas y precio por escrito. Con el 50 % empezamos.</p></div>
+      <div class="step"><span class="n">tres</span><h3>Producción</h3><p>Edito o construyo tu página y te muestro avances.</p></div>
+      <div class="step"><span class="n">cuatro</span><h3>Ajustes y entrega</h3><p>Dos rondas de cambios, pagas el saldo y recibes todo listo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi">
+  <div class="wrap about">
+    <div>
+      <p class="eyebrow">Sobre mí</p>
+      <p class="big">Editora y estratega de contenido. Trabajo con clientes de Colombia y del exterior, en español y en inglés.</p>
+    </div>
+    <dl class="facts">
+      <div class="fact"><dt>Herramientas</dt><dd>DaVinci Resolve · Premiere Pro · After Effects · CapCut · Canva</dd></div>
+      <div class="fact"><dt>Especialidad</dt><dd>Reels, TikTok y YouTube; color; postproducción de cortometrajes y documental.</dd></div>
+      <div class="fact"><dt>Experiencia</dt><dd>Editora gerente y guionista documentalista en el SENA (2024–2025) · editora de contenido en Conqueror SAS · editora de video en Abogados Now · dirección de arte en los cortos <em>USB</em> y <em>El Escondite</em></dd></div>
+      <div class="fact"><dt>Formación</dt><dd>Marketing y Negocios Digitales (UNAD) · Técnico en Elaboración de Audiovisuales, Fotografía Digital y Design Thinking (SENA)</dd></div>
+      <div class="fact"><dt>Idiomas</dt><dd>Español nativo · inglés C1 · italiano conversacional</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section aria-labelledby="quotes-title" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow" id="quotes-title">Lo que dicen quienes han trabajado conmigo</p>
+    <div class="grid2" style="margin-top:18px">
+      <figure class="card"><blockquote class="quote">“Muy organizada y con mucha atención al detalle.”</blockquote><figcaption class="eyebrow">Felipe Izasa</figcaption></figure>
+      <figure class="card"><blockquote class="quote">“Muy buen manejo de edición en el documental.”</blockquote><figcaption class="eyebrow">Fredy Urrea</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="en-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="en" lang="en">
+      <span class="script" aria-hidden="true">Hello</span>
+      <div>
+        <h2 id="en-title">Working with international brands</h2>
+        <p>I edit short-form video for creators and brands: 12 reels or shorts a month for 700 USD, or single videos from 200 USD, with DaVinci color grading, captions and two hook options. I work remotely from Bogotá and communicate in fluent English.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contacto</p>
+    <h2>¿Hacemos tu próximo video o tu <span class="script">página</span>?</h2>
+    <div class="grid2" style="margin-top:36px">
+      <div class="card">
+        <span class="eyebrow">WhatsApp</span>
+        <p class="value" id="wa">+57 304 392 9431</p>
+        <button class="copy" type="button" data-copy="wa">Copiar número</button>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Instagram y TikTok</span>
+        <p class="value" id="ig">@hsofonedit</p>
+        <button class="copy" type="button" data-copy="ig">Copiar usuario</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="helen">Helen</span>
+    <span>© 2026 Helen Sofía Morales · Bogotá, remoto para todo el mundo</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.screen').forEach(function(s){
+  var v=s.querySelector('video');
+  s.addEventListener('click', function(){
+    if(v.paused){
+      document.querySelectorAll('.screen video').forEach(function(o){ if(o!==v){ o.pause(); o.closest('.screen').classList.remove('playing'); } });
+      v.muted=false; var p=v.play(); if(p&&p.catch){ p.catch(function(){ v.muted=true; v.play(); }); }
+      s.classList.add('playing');
+    } else { v.pause(); s.classList.remove('playing'); }
+  });
+});
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click', function(){
+    var el=document.getElementById(b.dataset.copy); var t=el.textContent.trim(); var old=b.textContent;
+    function done(){ b.textContent='Copiado'; setTimeout(function(){ b.textContent=old; },1600); }
+    function fallback(){ var r=document.createRange(); r.selectNodeContents(el); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent='Selecciona y copia'; }
+    try{ navigator.clipboard.writeText(t).then(done, fallback); }catch(e){ fallback(); }
+  });
+});
+</script>
+
+</body>
+</html>
