@@ -130,7 +130,8 @@ section{padding-block:80px}
 .svc-intro p{color:var(--muted);font-size:.95rem}
 .svc-intro .for{font-family:var(--wide);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--crema);opacity:.8}
 .jump{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
-@media (max-width: 860px){.svc-group{grid-template-columns:1fr;gap:20px}}
+.svc-group .pay-note{grid-column:2;margin-top:0}
+@media (max-width: 860px){.svc-group{grid-template-columns:1fr;gap:20px}.svc-group .pay-note{grid-column:auto}}
 
 
 /* ejemplos */
@@ -363,13 +364,25 @@ footer .helen{font-size:2rem;color:var(--crema)}
         <a class="btn ghost" href="#ejemplos" style="align-self:flex-start;margin-top:6px">Ver ejemplos</a>
       </div>
     <div class="services">
+      <article class="svc">
+        <span class="tag-pill">Para empezar</span>
+        <p class="eyebrow">Web Básica</p>
+        <h3>Tu negocio en Google, sin complicaciones</h3>
+        <p class="price">550.000 COP</p>
+        <ul>
+          <li>Una página con servicios, fotos y ubicación</li>
+          <li>Botón directo a WhatsApp</li>
+          <li>Tú nos das los textos y las fotos</li>
+          <li>Entrega en 7 días hábiles</li>
+        </ul>
+      </article>
       <article class="svc featured">
-        <span class="tag-pill">Precio de lanzamiento</span>
-        <p class="eyebrow">Página web</p>
-        <h3>Landing page para tu negocio</h3>
+        <span class="tag-pill">Más pedida</span>
+        <p class="eyebrow" style="color:var(--crema);opacity:.8">Landing Pro</p>
+        <h3>Una página que vende por ti</h3>
         <p class="price">1.000.000 COP</p>
         <ul>
-          <li>Una página clara que lleva a WhatsApp</li>
+          <li>Diseño con tu marca y botón a WhatsApp</li>
           <li>Textos escritos para vender</li>
           <li>Se ve perfecta en celular</li>
           <li>Entrega en 10 días hábiles</li>
@@ -386,7 +399,19 @@ footer .helen{font-size:2rem;color:var(--crema)}
           <li>Mantenimiento opcional: 150.000 COP/mes</li>
         </ul>
       </article>
+      <article class="svc">
+        <span class="tag-pill">Sin pago grande</span>
+        <p class="eyebrow">Landing por mensualidad</p>
+        <h3>Empieza hoy, paga mes a mes</h3>
+        <p class="price">200.000 COP <small>+ 120.000/mes × 8</small></p>
+        <ul>
+          <li>La misma Landing Pro</li>
+          <li>Mantenimiento incluido mientras pagas</li>
+          <li>Ideal si no tienes todo el dinero hoy</li>
+        </ul>
+      </article>
     </div>
+    <p class="note pay-note">Todas las opciones se pueden pagar en 2 cuotas: 50 % para empezar y 50 % al entregar.</p>
     </div>
 
     <div class="svc-group" id="ugc">
