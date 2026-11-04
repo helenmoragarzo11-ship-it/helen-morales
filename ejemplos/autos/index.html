@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cumbre Autos · Proyecto concepto</title>
+<meta name="description" content="Página web concepto para una venta de carros usados en Bogotá, diseñada por Helen Morales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Concepto: vitrina nocturna — negro grafito, metal, acento rojo señal; tarjetas de inventario con filtros y simulador de crédito */
+:root{--bg:#0D0F12;--panel:#15181D;--panel2:#1C2027;--ink:#F3F4F6;--muted:#9AA1AB;--line:#262B33;--red:#FF4B2B;--red-ink:#fff;--silver:#C7CCD3;
+--display:"Sora",system-ui,sans-serif;--sans:"Inter",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+.ribbon{background:var(--red);color:#fff;font-size:.8rem;text-align:center;padding:8px 16px}
+nav{position:sticky;top:0;z-index:5;background:rgba(13,15,18,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.25rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:22px;height:12px;background:linear-gradient(135deg,var(--red) 50%,transparent 50%);display:inline-block}
+.links{display:flex;gap:26px;font-size:.9rem;color:var(--muted)}
+.links a{text-decoration:none}.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:var(--red-ink);font-weight:600;font-size:.95rem;padding:14px 22px;border-radius:10px;text-decoration:none;border:0;cursor:pointer;font-family:var(--sans)}
+.btn.ghost{background:transparent;border:1px solid #3A414B;color:var(--ink)}
+.hero{position:relative;overflow:hidden;background:radial-gradient(900px 420px at 75% 70%,rgba(255,75,43,.18),transparent 60%),var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:20px;align-items:center;padding-block:56px 40px}
+.kick{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.8rem);font-weight:800;margin-top:14px}
+.hero h1 span{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.hero .lead{color:var(--muted);font-size:1.08rem;max-width:44ch;margin-top:18px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.badges{display:flex;gap:22px;flex-wrap:wrap;margin-top:30px;font-size:.85rem;color:var(--muted)}
+.badges b{display:block;font-family:var(--display);color:var(--ink);font-size:1.35rem}
+.hero-car{position:relative}
+.hero-car svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+.price-tag{position:absolute;left:6%;top:6%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.82rem;color:var(--muted)}
+.price-tag b{display:block;font-family:var(--display);font-size:1.3rem;color:var(--ink)}
+.search{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;grid-template-columns:repeat(3,1fr) auto;gap:12px;margin-top:8px}
+.search label{display:grid;gap:6px;font-size:.75rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.search select{font:inherit;font-size:.95rem;color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px;text-transform:none;letter-spacing:0}
+.search .btn{align-self:end}
+section{padding-block:80px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.head h2{font-size:clamp(2rem,4.8vw,3.2rem);font-weight:800}
+.head p{color:var(--muted);max-width:42ch}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filters button{font:inherit;font-size:.88rem;font-weight:600;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.car{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.car:hover{transform:translateY(-3px);border-color:#3A414B}
+.car .pic{background:linear-gradient(180deg,#1C2027,#12151A);aspect-ratio:16/10;max-width:100%;display:grid;place-items:center;padding:10px 14px;position:relative}
+.car .pic svg{width:100%;height:auto}
+.car .pic .yr{position:absolute;top:10px;left:10px;font-size:.72rem;font-weight:700;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+.car .info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.car h3{font-size:1.08rem;font-weight:700}
+.specs{display:flex;flex-wrap:wrap;gap:6px}
+.specs span{font-size:.74rem;color:var(--muted);background:var(--panel2);border-radius:6px;padding:3px 8px}
+.car .row{display:flex;justify-content:space-between;align-items:end;gap:8px;margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
+.car .pr{font-family:var(--display);font-weight:700;font-size:1.2rem;font-variant-numeric:tabular-nums}
+.car .pr small{display:block;font-family:var(--sans);font-weight:500;font-size:.72rem;color:var(--muted)}
+.car a.ask{font-size:.82rem;font-weight:600;color:var(--red);text-decoration:none;white-space:nowrap}
+.sim{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px}
+.field{display:grid;gap:8px;margin-bottom:20px}
+.field .lbl{display:flex;justify-content:space-between;font-size:.88rem;color:var(--muted)}
+.field .lbl b{color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--red)}
+.result{background:linear-gradient(160deg,#21262E,#15181D);display:flex;flex-direction:column;justify-content:center;gap:10px}
+.result .big{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,3.6rem);font-variant-numeric:tabular-nums;line-height:1}
+.result .note{color:var(--muted);font-size:.82rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.st{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.st .n{font-family:var(--display);font-weight:800;color:var(--red);font-size:1.4rem}
+.st h3{font-size:1.1rem;margin-top:10px}
+.st p{color:var(--muted);font-size:.9rem;margin-top:6px}
+.trade{background:var(--silver);color:#111;border-radius:22px;padding:40px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.trade h2{font-size:clamp(2rem,4.6vw,3rem);font-weight:800}
+.trade p{margin-top:12px;color:#3A3F46;max-width:46ch}
+.trade ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-weight:600}
+.trade li::before{content:"✓ ";color:var(--red)}
+footer{border-top:1px solid var(--line);padding-block:34px;color:var(--muted);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--red)}
+.wa{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));background:#1F9D55;color:#fff;border-radius:999px;padding:14px 20px;font-weight:600;text-decoration:none;box-shadow:0 14px 30px -12px rgba(0,0,0,.6);font-size:.92rem;z-index:6}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.links{display:none}.hero .wrap,.sim,.trade{grid-template-columns:1fr}.search{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.trade{padding:28px}section{padding-block:60px}.hero-car{order:-1}}
+</style>
+</head>
+<body>
+<div class="ribbon">Proyecto concepto diseñado por <a href="../../" style="color:#fff">Helen Morales</a>. "Cumbre Autos" es una marca ficticia; carros y precios de ejemplo.</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><i></i>CUMBRE AUTOS</a>
+    <div class="links"><a href="#inventario">Inventario</a><a href="#credito">Crédito</a><a href="#permuta">Recibimos tu carro</a><a href="#proceso">Cómo comprar</a></div>
+    <a class="btn" href="#inventario">Ver carros</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kick">Usados certificados · Bogotá</p>
+      <h1>Tu próximo carro, <span>sin vueltas</span></h1>
+      <p class="lead">Carros revisados en 150 puntos, papeles al día y crédito aprobado en 24 horas. Lo ves, lo pruebas y te lo llevas.</p>
+      <div class="ctas"><a class="btn" href="#inventario">Ver inventario</a><a class="btn ghost" href="#credito">Simular mi cuota</a></div>
+      <div class="badges"><span><b>150</b>puntos de revisión</span><span><b>24 h</b>aprobación de crédito</span><span><b>6 meses</b>de garantía</span></div>
+    </div>
+    <div class="hero-car">
+      <div id="heroCar"></div>
+      <div class="price-tag">Destacado de la semana<b>Mazda CX-30 2023</b>$118.900.000</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <form class="search" onsubmit="event.preventDefault();filterBy(this.tipo.value);document.getElementById('inventario').scrollIntoView()">
+      <label>Tipo<select name="tipo"><option value="all">Todos</option><option value="suv">SUV</option><option value="sedan">Sedán</option><option value="hatch">Hatchback</option><option value="pickup">Pickup</option></select></label>
+      <label>Presupuesto<select><option>Cualquiera</option><option>Hasta $60 millones</option><option>$60 a $100 millones</option><option>Más de $100 millones</option></select></label>
+      <label>Transmisión<select><option>Cualquiera</option><option>Automática</option><option>Mecánica</option></select></label>
+      <button class="btn" type="submit">Buscar</button>
+    </form>
+  </div>
+</header>
+
+<section id="inventario">
+  <div class="wrap">
+    <div class="head"><h2>Inventario disponible</h2><p>Precios con traspaso incluido. Pregunta por cualquier carro y te mandamos fotos y video por WhatsApp.</p></div>
+    <div class="filters" role="group" aria-label="Filtrar por tipo">
+      <button type="button" data-f="all" aria-pressed="true">Todos</button>
+      <button type="button" data-f="suv" aria-pressed="false">SUV</button>
+      <button type="button" data-f="sedan" aria-pressed="false">Sedán</button>
+      <button type="button" data-f="hatch" aria-pressed="false">Hatchback</button>
+      <button type="button" data-f="pickup" aria-pressed="false">Pickup</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="credito" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head"><h2>Simula tu cuota</h2><p>Mueve las barras y mira cuánto pagarías al mes. Un asesor te confirma la tasa real según tu perfil.</p></div>
+    <div class="sim">
+      <div class="card">
+        <div class="field"><div class="lbl">Valor del carro <b id="vPrice"></b></div><input type="range" id="price" min="30000000" max="180000000" step="1000000" value="80000000"></div>
+        <div class="field"><div class="lbl">Cuota inicial <b id="vDown"></b></div><input type="range" id="down" min="10" max="60" step="5" value="30"></div>
+        <div class="field" style="margin-bottom:0"><div class="lbl">Plazo <b id="vTerm"></b></div><input type="range" id="term" min="12" max="72" step="12" value="48"></div>
+      </div>
+      <div class="card result">
+        <span class="note">Tu cuota mensual aproximada</span>
+        <span class="big" id="vPay"></span>
+        <span class="note" id="vFin"></span>
+        <span class="note">Simulación con una tasa de ejemplo del 1,6 % mensual. No es una oferta de crédito.</span>
+        <a class="btn" id="askCredit" href="#" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:8px">Quiero esta cuota</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="head"><h2>Comprar es así de fácil</h2></div>
+    <div class="steps">
+      <div class="st"><span class="n">01</span><h3>Elige</h3><p>Escoge en el inventario y pide fotos y video por WhatsApp.</p></div>
+      <div class="st"><span class="n">02</span><h3>Pruébalo</h3><p>Agenda tu prueba de manejo, entre semana o sábado.</p></div>
+      <div class="st"><span class="n">03</span><h3>Financia</h3><p>Te presentamos a varios bancos y eliges la mejor tasa.</p></div>
+      <div class="st"><span class="n">04</span><h3>Llévatelo</h3><p>Traspaso, SOAT y revisión al día. Sales manejando.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="permuta" style="padding-top:0">
+  <div class="wrap">
+    <div class="trade">
+      <div><h2>Recibimos tu carro como parte de pago</h2><p>Lo avaluamos en 30 minutos, sin compromiso, y te damos una oferta por escrito.</p><div class="ctas"><a class="btn" href="https://wa.me/?text=Hola%2C%20quiero%20avaluar%20mi%20carro%20para%20permuta" target="_blank" rel="noopener">Avaluar mi carro</a></div></div>
+      <ul><li>Peritaje gratis</li><li>Pagamos al contado si no compras</li><li>Nos encargamos del traspaso</li></ul>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Cumbre Autos · Bogotá (marca de ejemplo)</span><span>Diseño web: <a href="../../">Helen Morales</a></span></div></footer>
+<a class="wa" href="#inventario">WhatsApp</a>
+
+<script>
+const SHAPES={
+ sedan:{body:"M18 98 Q16 76 40 72 L92 66 L128 38 Q136 32 150 32 L214 32 Q228 32 238 42 L262 66 L292 72 Q306 76 304 98 Z",win:["M136 44 L118 64 L178 64 L178 40 L150 40 Q141 40 136 44 Z","M186 40 L186 64 L246 64 L228 46 Q222 40 212 40 Z"],w:[80,248],wy:100,r:22},
+ suv:{body:"M18 100 L18 74 Q18 64 30 62 L84 58 L108 26 Q112 20 122 20 L250 20 Q262 20 268 30 L288 60 Q304 62 304 78 L304 100 Z",win:["M118 30 L98 56 L178 56 L178 30 Z","M186 30 L186 56 L276 56 L262 34 Q258 30 250 30 Z"],w:[80,250],wy:102,r:24},
+ hatch:{body:"M24 98 Q22 76 44 72 L96 66 L130 36 Q136 30 148 30 L236 30 Q250 30 256 44 L272 70 Q296 74 296 98 Z",win:["M138 40 L120 64 L182 64 L182 38 L150 38 Q142 38 138 40 Z","M190 38 L190 64 L262 64 L250 44 Q246 38 236 38 Z"],w:[82,240],wy:100,r:22},
+ pickup:{body:"M14 100 L14 70 Q14 62 26 60 L80 58 L104 28 Q108 22 118 22 L184 22 Q194 22 194 32 L194 62 L304 62 L306 100 Z",win:["M114 32 L96 56 L184 56 L184 32 Z"],w:[76,256],wy:102,r:24}
+};
+function carSVG(t,c){const s=SHAPES[t];return `<svg viewBox="0 0 320 140" aria-hidden="true"><ellipse cx="160" cy="128" rx="140" ry="8" fill="#000" opacity=".45"/><path d="${s.body}" fill="${c}"/><path d="${s.body}" fill="url(#sh)" opacity=".35"/>${s.win.map(p=>`<path d="${p}" fill="#0E1116" opacity=".85"/>`).join("")}<rect x="290" y="78" width="12" height="6" rx="2" fill="#FFE9A8"/><rect x="18" y="80" width="10" height="6" rx="2" fill="#FF4B2B"/>${s.w.map(x=>`<circle cx="${x}" cy="${s.wy}" r="${s.r}" fill="#0B0C0F"/><circle cx="${x}" cy="${s.wy}" r="${s.r*.5}" fill="#8A929C"/><circle cx="${x}" cy="${s.wy}" r="${s.r*.18}" fill="#2A2F36"/>`).join("")}<defs><linearGradient id="sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs></svg>`}
+const CARS=[
+ {m:"Mazda CX-30 Grand Touring",y:2023,t:"suv",c:"#B3261E",km:"18.000 km",tr:"Automática",f:"Gasolina",p:118900000},
+ {m:"Toyota Corolla XEI",y:2022,t:"sedan",c:"#D7DADF",km:"32.000 km",tr:"Automática",f:"Híbrido",p:104500000},
+ {m:"Chevrolet Tracker LT",y:2022,t:"suv",c:"#2F5D8C",km:"41.000 km",tr:"Automática",f:"Gasolina",p:82900000},
+ {m:"Mazda 2 Sedán Touring",y:2022,t:"sedan",c:"#3B3F46",km:"27.000 km",tr:"Automática",f:"Gasolina",p:68500000},
+ {m:"Renault Duster Intens",y:2021,t:"suv",c:"#7A7F86",km:"55.000 km",tr:"Mecánica",f:"Gasolina",p:65900000},
+ {m:"Volkswagen Polo Comfortline",y:2021,t:"hatch",c:"#E8E9EB",km:"38.000 km",tr:"Mecánica",f:"Gasolina",p:61500000},
+ {m:"Kia Picanto Zenith",y:2023,t:"hatch",c:"#C9A227",km:"12.000 km",tr:"Automática",f:"Gasolina",p:52900000},
+ {m:"Toyota Hilux 4x4",y:2020,t:"pickup",c:"#5B6B4E",km:"78.000 km",tr:"Mecánica",f:"Diésel",p:144900000}
+];
+const fmt=n=>"$"+Math.round(n).toLocaleString("es-CO");
+function render(f){document.getElementById("grid").innerHTML=CARS.filter(c=>f==="all"||c.t===f).map(c=>`<article class="car"><div class="pic"><span class="yr">${c.y}</span>${carSVG(c.t,c.c)}</div><div class="info"><h3>${c.m}</h3><div class="specs"><span>${c.km}</span><span>${c.tr}</span><span>${c.f}</span></div><div class="row"><span class="pr">${fmt(c.p)}<small>Desde ${fmt(cuota(c.p,.3,60))}/mes</small></span><a class="ask" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent("Hola, Cumbre Autos. Me interesa el "+c.m+" "+c.y+".")}">Preguntar →</a></div></div></article>`).join("")}
+function filterBy(f){document.querySelectorAll(".filters button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===f));render(f)}
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>filterBy(b.dataset.f)));
+function cuota(price,downPct,n){const P=price*(1-downPct),r=.016;return P*r/(1-Math.pow(1+r,-n))}
+function sim(){const p=+price.value,d=+down.value/100,n=+term.value,q=cuota(p,d,n);
+ vPrice.textContent=fmt(p);vDown.textContent=Math.round(d*100)+"% · "+fmt(p*d);vTerm.textContent=n+" meses";vPay.textContent=fmt(q);
+ vFin.textContent="Financias "+fmt(p*(1-d))+" a "+n+" meses";
+ askCredit.href="https://wa.me/?text="+encodeURIComponent("Hola, Cumbre Autos. Quiero un crédito de "+fmt(p*(1-d))+" a "+n+" meses (cuota aprox. "+fmt(q)+").")}
+["price","down","term"].forEach(id=>document.getElementById(id).addEventListener("input",sim));
+document.getElementById("heroCar").innerHTML=carSVG("suv","#B3261E");
+render("all");sim();
+</script>
+</body>
+</html>

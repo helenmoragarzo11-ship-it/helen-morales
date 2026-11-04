@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vértice Constructora · Proyecto concepto</title>
+<meta name="description" content="Página web concepto para una constructora en Bogotá, diseñada por Helen Morales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Concepto: obra y plano — concreto claro, grafito y ámbar de seguridad, retícula de plano técnico */
+:root{--bg:#F1EFEA;--paper:#FAF9F6;--ink:#1D2125;--muted:#5E646A;--line:#D9D5CC;--graphite:#24292E;--amber:#E9A23B;--amber-ink:#2A1B05;--blue:#3E6A8A;
+--display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;--sans:"Inter",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:.98;margin:0;text-transform:uppercase;letter-spacing:.01em}
+p{margin:0}
+a{color:inherit}
+.ribbon{background:var(--graphite);color:#E9E6DF;font-size:.8rem;text-align:center;padding:8px 16px}
+.ribbon a{color:var(--amber)}
+nav{position:sticky;top:0;z-index:5;background:rgba(241,239,234,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:.06em;text-decoration:none}
+.logo svg{flex:none}
+.links{display:flex;gap:26px;font-size:.9rem;font-weight:500}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--amber);color:var(--amber-ink);font-weight:600;font-size:.95rem;padding:14px 22px;border-radius:2px;text-decoration:none;border:0;cursor:pointer}
+.btn.dark{background:var(--graphite);color:#fff}
+.btn.line{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
+.hero{position:relative;overflow:hidden;background:
+ linear-gradient(var(--line) 1px,transparent 1px) 0 0/40px 40px,
+ linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/40px 40px,var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;padding-block:64px 72px}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.tag::before{content:"";width:28px;height:2px;background:var(--amber)}
+.hero h1{font-size:clamp(2.8rem,6vw,4.6rem);margin-top:16px}
+.hero h1 em{font-style:normal;color:var(--amber);-webkit-text-stroke:0}
+.hero .lead{color:var(--muted);font-size:1.1rem;max-width:46ch;margin-top:20px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:2px solid var(--ink)}
+.stats div{padding:14px 12px 0 0}
+.stats b{display:block;font-family:var(--display);font-size:2.4rem;line-height:1}
+.stats span{font-size:.82rem;color:var(--muted)}
+.blueprint{background:var(--graphite);border-radius:4px;padding:20px;position:relative;box-shadow:0 30px 60px -30px rgba(29,33,37,.55)}
+.blueprint svg{display:block;width:100%;height:auto}
+.blueprint .stamp{position:absolute;right:18px;top:18px;background:var(--amber);color:var(--amber-ink);font-family:var(--display);font-weight:700;font-size:.95rem;letter-spacing:.08em;padding:6px 12px;text-transform:uppercase}
+section{padding-block:84px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.head h2{font-size:clamp(2.2rem,5.5vw,3.6rem)}
+.head p{color:var(--muted);max-width:44ch}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--paper);padding:28px 24px;display:flex;flex-direction:column;gap:12px;min-height:260px}
+.svc .n{font-family:var(--display);font-size:1rem;color:var(--blue);letter-spacing:.1em}
+.svc h3{font-size:1.6rem}
+.svc p{color:var(--muted);font-size:.94rem}
+.svc .mini{margin-top:auto;font-size:.82rem;font-weight:600}
+.dark{background:var(--graphite);color:#F1EFEA}
+.dark .head p{color:#A7ADB3}
+.projects{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:18px}
+.proj{background:#2D3338;border-radius:4px;overflow:hidden;display:flex;flex-direction:column}
+.proj .img{aspect-ratio:4/3;max-width:100%;position:relative;display:block}
+.proj .img svg{width:100%;height:100%;display:block}
+.proj.big .img{aspect-ratio:auto;flex:1;min-height:260px}
+.proj .body{padding:18px 20px 20px}
+.proj .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.chip{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border:1px solid #4A5157;border-radius:2px;color:#C9CED2}
+.chip.on{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.proj h3{font-size:1.7rem}
+.proj p{color:#A7ADB3;font-size:.92rem;margin-top:6px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:s}
+.step{border-top:3px solid var(--ink);padding-top:16px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--display);font-weight:700;font-size:2.6rem;color:var(--amber);line-height:1;display:block;margin-bottom:8px}
+.step h3{font-size:1.35rem}
+.step p{color:var(--muted);font-size:.9rem;margin-top:6px}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.why ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.why li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);padding:16px}
+.why li svg{margin-top:2px}
+.why li b{display:block}
+.why li span{color:var(--muted);font-size:.92rem}
+.photo{aspect-ratio:4/5;max-width:100%;background:repeating-linear-gradient(135deg,#E3E0D8 0 14px,#ECE9E2 14px 28px);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:.85rem;text-align:center;padding:20px}
+.quote{background:var(--paper);border-left:4px solid var(--amber);padding:28px;margin-top:24px}
+.quote p{font-family:var(--display);font-size:1.5rem;line-height:1.15;text-transform:none;font-weight:600}
+.quote span{display:block;color:var(--muted);font-size:.85rem;margin-top:10px}
+.cta{background:var(--amber);color:var(--amber-ink)}
+.cta .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.cta h2{font-size:clamp(2.4rem,6vw,4.2rem)}
+.cta p{margin-top:14px;max-width:44ch}
+.form{background:var(--paper);padding:26px;border-radius:4px;display:grid;gap:12px;color:var(--ink)}
+.form label{font-size:.8rem;font-weight:600;display:grid;gap:6px}
+.form select,.form input{font:inherit;padding:12px;border:1px solid var(--line);border-radius:2px;background:#fff;width:100%}
+footer{background:var(--graphite);color:#A7ADB3;padding-block:36px;font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--amber)}
+.wa{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));background:#1F7A4D;color:#fff;border-radius:999px;padding:14px 20px;font-weight:600;text-decoration:none;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);font-size:.92rem;z-index:6}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+@media (max-width:960px){.services{grid-template-columns:1fr 1fr}.projects{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.links{display:none}.hero .wrap,.why,.cta .wrap{grid-template-columns:1fr}.services{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.stats b{font-size:2rem}section{padding-block:64px}}
+</style>
+</head>
+<body>
+<div class="ribbon">Proyecto concepto diseñado por <a href="../../">Helen Morales</a>. "Vértice Constructora" es una marca ficticia y sus cifras son de ejemplo.</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M15 2 28 26H2z" fill="none" stroke="#1D2125" stroke-width="2.5"/><path d="M15 11 21 22H9z" fill="#E9A23B"/></svg>VÉRTICE</a>
+    <div class="links"><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#proceso">Proceso</a><a href="#nosotros">Nosotros</a></div>
+    <a class="btn" href="#cotizar">Cotizar obra</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="tag">Constructora · Bogotá y Sabana</p>
+      <h1>Construimos lo que <em>proyectas</em></h1>
+      <p class="lead">Casas, locales y remodelaciones con diseño, licencias y obra en un solo equipo. Presupuesto cerrado, cronograma claro y avances cada semana.</p>
+      <div class="ctas"><a class="btn" href="#cotizar">Pide tu cotización</a><a class="btn line" href="#proyectos">Ver proyectos</a></div>
+      <div class="stats">
+        <div><b>15+</b><span>años de obra</span></div>
+        <div><b>120</b><span>proyectos entregados</span></div>
+        <div><b>48.000</b><span>m² construidos</span></div>
+      </div>
+    </div>
+    <div class="blueprint">
+      <svg viewBox="0 0 520 420" role="img" aria-label="Plano técnico de una casa de dos pisos">
+        <defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#3A4249" stroke-width="1"/></pattern></defs>
+        <rect width="520" height="420" fill="url(#g)"/>
+        <g fill="none" stroke="#DCE3E8" stroke-width="2">
+          <path d="M70 360V190L260 70l190 120v170z"/>
+          <path d="M70 270h380"/>
+          <rect x="110" y="290" width="70" height="70"/>
+          <rect x="220" y="290" width="80" height="70"/>
+          <rect x="340" y="290" width="70" height="44"/>
+          <rect x="110" y="205" width="70" height="44"/>
+          <rect x="230" y="205" width="60" height="44"/>
+          <rect x="340" y="205" width="70" height="44"/>
+          <path d="M240 290v70M280 290v70"/>
+        </g>
+        <g stroke="#E9A23B" stroke-width="1.5" fill="none">
+          <path d="M70 385h380M70 378v14M450 378v14"/>
+          <path d="M478 360V190M471 360h14M471 190h14"/>
+        </g>
+        <g fill="#E9A23B" font-family="Barlow Condensed, sans-serif" font-size="16" font-weight="600">
+          <text x="236" y="404">12,40 m</text>
+          <text x="484" y="280" transform="rotate(90 484 280)">6,80 m</text>
+        </g>
+        <g fill="#8D979F" font-family="Inter, sans-serif" font-size="11">
+          <text x="80" y="60">PLANO A-01 · FACHADA PRINCIPAL</text>
+          <text x="80" y="76">ESC 1:100</text>
+        </g>
+      </svg>
+      <span class="stamp">Licencia aprobada</span>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="head"><h2>Qué construimos</h2><p>Un solo contrato desde el diseño hasta la entrega de llaves. Tú no coordinas a nadie.</p></div>
+    <div class="services">
+      <article class="svc"><span class="n">01</span><h3>Vivienda</h3><p>Casas campestres y urbanas, de uno a tres pisos, con acabados a tu medida.</p><span class="mini">Desde $2.400.000 / m²</span></article>
+      <article class="svc"><span class="n">02</span><h3>Comercial</h3><p>Locales, oficinas y bodegas listos para operar, con redes y adecuaciones.</p><span class="mini">Proyectos de 100 a 2.000 m²</span></article>
+      <article class="svc"><span class="n">03</span><h3>Remodelación</h3><p>Cocinas, baños, ampliaciones y reforzamiento estructural sin sorpresas.</p><span class="mini">Visita técnica sin costo</span></article>
+      <article class="svc"><span class="n">04</span><h3>Diseño y licencias</h3><p>Arquitectura, cálculo estructural y trámite de licencia ante la curaduría.</p><span class="mini">Incluido en obra completa</span></article>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos" class="dark">
+  <div class="wrap">
+    <div class="head"><h2>Proyectos recientes</h2><p>Cada obra con su presupuesto, su cronograma y su fecha de entrega cumplida.</p></div>
+    <div class="projects">
+      <article class="proj big">
+        <div class="img">
+          <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="600" height="360" fill="#3B4A57"/><rect y="250" width="600" height="110" fill="#56634A"/>
+            <circle cx="500" cy="80" r="34" fill="#E9A23B" opacity=".85"/>
+            <path d="M120 250V150l130-70 130 70v100z" fill="#E8E4DA"/><path d="M110 152 250 76l140 76" fill="none" stroke="#24292E" stroke-width="10"/>
+            <rect x="380" y="170" width="120" height="80" fill="#D3CEC2"/><rect x="380" y="160" width="128" height="12" fill="#24292E"/>
+            <rect x="150" y="180" width="44" height="40" fill="#24292E"/><rect x="230" y="190" width="44" height="60" fill="#7C5A3A"/><rect x="306" y="180" width="44" height="40" fill="#24292E"/><rect x="400" y="190" width="80" height="34" fill="#24292E"/>
+            <path d="M0 260h600" stroke="#4A5640" stroke-width="6"/>
+          </svg>
+        </div>
+        <div class="body"><div class="meta"><span class="chip on">Vivienda</span><span class="chip">Chía</span><span class="chip">320 m²</span></div><h3>Casa Los Arrayanes</h3><p>Casa campestre de dos pisos con estudio, terraza y garaje doble. Entregada en 11 meses.</p></div>
+      </article>
+      <article class="proj">
+        <div class="img">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <rect width="400" height="300" fill="#2F3B45"/><rect y="230" width="400" height="70" fill="#22292F"/>
+            <rect x="70" y="60" width="260" height="170" fill="#C9CED2"/>
+            <g fill="#3E6A8A"><rect x="90" y="80" width="50" height="34"/><rect x="155" y="80" width="50" height="34"/><rect x="220" y="80" width="50" height="34"/><rect x="285" y="80" width="30" height="34"/><rect x="90" y="128" width="50" height="34"/><rect x="155" y="128" width="50" height="34"/><rect x="220" y="128" width="50" height="34"/><rect x="285" y="128" width="30" height="34"/></g>
+            <rect x="90" y="176" width="225" height="54" fill="#1D2125"/><rect x="90" y="176" width="225" height="8" fill="#E9A23B"/>
+          </svg>
+        </div>
+        <div class="body"><div class="meta"><span class="chip on">Comercial</span><span class="chip">Bogotá</span></div><h3>Edificio Calle 85</h3><p>Locales en primer piso y dos plantas de oficinas.</p></div>
+      </article>
+      <article class="proj">
+        <div class="img">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <rect width="400" height="300" fill="#ECE8DF"/><rect y="210" width="400" height="90" fill="#B9A58A"/>
+            <rect x="40" y="120" width="320" height="90" fill="#FAF9F6" stroke="#24292E" stroke-width="3"/>
+            <rect x="60" y="140" width="120" height="16" fill="#24292E"/><rect x="60" y="160" width="120" height="50" fill="#D9D5CC"/>
+            <rect x="200" y="60" width="60" height="70" fill="#FAF9F6" stroke="#24292E" stroke-width="3"/>
+            <circle cx="300" cy="160" r="22" fill="#E9A23B"/><rect x="280" y="180" width="40" height="30" fill="#3E6A8A"/>
+          </svg>
+        </div>
+        <div class="body"><div class="meta"><span class="chip on">Remodelación</span><span class="chip">Usaquén</span></div><h3>Cocina abierta Santa Bárbara</h3><p>Demolición de muro, isla central y redes nuevas en 6 semanas.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="head"><h2>Así trabajamos</h2><p>Sabes en qué va tu obra todos los viernes, con fotos y avance real contra el cronograma.</p></div>
+    <div class="steps">
+      <div class="step"><h3>Visita técnica</h3><p>Vamos al lote o al inmueble y escuchamos lo que necesitas.</p></div>
+      <div class="step"><h3>Diseño</h3><p>Planos, renders y especificaciones que apruebas antes de construir.</p></div>
+      <div class="step"><h3>Presupuesto cerrado</h3><p>Precio por capítulos y cronograma firmado. Sin cobros sorpresa.</p></div>
+      <div class="step"><h3>Obra</h3><p>Residente de obra fijo y reporte semanal con fotos.</p></div>
+      <div class="step"><h3>Entrega</h3><p>Recibo a satisfacción y garantía escrita de un año.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros" style="padding-top:0">
+  <div class="wrap why">
+    <div>
+      <div class="photo">Foto del equipo en obra<br>(se reemplaza por la real)</div>
+    </div>
+    <div>
+      <p class="tag">Por qué Vértice</p>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.4rem);margin:12px 0 22px">Obra seria, trato cercano</h2>
+      <ul>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" fill="none" stroke="#E9A23B" stroke-width="3"/></svg><div><b>Ingenieros y arquitectos de planta</b><span>Nada se subcontrata sin supervisión propia.</span></div></li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" fill="none" stroke="#E9A23B" stroke-width="3"/></svg><div><b>Pólizas y garantía por escrito</b><span>Cumplimiento, calidad y estabilidad de la obra.</span></div></li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6" fill="none" stroke="#E9A23B" stroke-width="3"/></svg><div><b>Pagos por avance</b><span>Pagas lo construido, no por adelantado.</span></div></li>
+      </ul>
+      <div class="quote"><p>"Aquí va el testimonio real de un cliente sobre su obra."</p><span>Nombre del cliente · Tipo de proyecto</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="cotizar" class="cta">
+  <div class="wrap">
+    <div>
+      <h2>Cuéntanos tu proyecto</h2>
+      <p>Te respondemos en menos de 24 horas y agendamos la visita técnica sin costo.</p>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();var t=encodeURIComponent('Hola, Vértice. Quiero cotizar: '+this.tipo.value+' en '+(this.zona.value||'(zona)')+', área aproximada '+(this.area.value||'?')+' m².');window.open('https://wa.me/?text='+t,'_blank')">
+      <label>Tipo de proyecto<select name="tipo"><option>Casa nueva</option><option>Local u oficina</option><option>Remodelación</option><option>Diseño y licencia</option></select></label>
+      <label>¿Dónde?<input name="zona" placeholder="Ej: Chía, Usaquén, Cajicá"></label>
+      <label>Área aproximada (m²)<input name="area" inputmode="numeric" placeholder="Ej: 180"></label>
+      <button class="btn dark" type="submit">Enviar por WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Vértice Constructora · Bogotá (marca de ejemplo)</span><span>Diseño web: <a href="../../">Helen Morales</a></span></div></footer>
+<a class="wa" href="#cotizar">WhatsApp</a>
+</body>
+</html>
